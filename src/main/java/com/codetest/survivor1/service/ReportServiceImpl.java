@@ -2,15 +2,15 @@ package com.codetest.survivor1.service;
 
 import org.springframework.stereotype.Service;
 
-import com.codetest.survivor1.dao.SurvivorDAO;
+import com.codetest.survivor1.repository.SurvivorRepository;
 import com.codetest.survivor1.exceptions.SurvivorException;
 
 @Service
 public class ReportServiceImpl implements ReportService {
 
-	private final SurvivorDAO survivorDAO;
+	private final SurvivorRepository survivorDAO;
 
-	public ReportServiceImpl(SurvivorDAO survivorDAO) {
+	public ReportServiceImpl(SurvivorRepository survivorDAO) {
 		super();
 		this.survivorDAO = survivorDAO;
 	}

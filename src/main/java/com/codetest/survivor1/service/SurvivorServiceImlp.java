@@ -3,8 +3,8 @@ package com.codetest.survivor1.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.codetest.survivor1.dao.ItemInventoryDAO;
-import com.codetest.survivor1.dao.SurvivorDAO;
+import com.codetest.survivor1.repository.ItemInventoryRepository;
+import com.codetest.survivor1.repository.SurvivorRepository;
 import com.codetest.survivor1.entity.ItemInventory;
 import com.codetest.survivor1.entity.Location;
 import com.codetest.survivor1.entity.Survivor;
@@ -14,11 +14,11 @@ import com.codetest.survivor1.exceptions.SurvivorException;
 @Service
 public class SurvivorServiceImlp implements SurvivorService {
 
-	private SurvivorDAO survivorDAO;
+	private SurvivorRepository survivorDAO;
 	@Autowired
-	private ItemInventoryDAO itemInventoryDAO;
+	private ItemInventoryRepository itemInventoryRepository;
 
-	public SurvivorServiceImlp(SurvivorDAO survivorDAO) {
+	public SurvivorServiceImlp(SurvivorRepository survivorDAO) {
 		super();
 		this.survivorDAO = survivorDAO;
 	}
@@ -55,10 +55,10 @@ public class SurvivorServiceImlp implements SurvivorService {
 		Survivor survivor2 = survivorDAO.findById(id2)
 				.orElseThrow(() -> new SurvivorException("This survivor is not registered"));
 
-		ItemInventory offer = itemInventoryDAO.findById(id3)
+		ItemInventory offer = itemInventoryRepository.findById(id3)
 				.orElseThrow(() -> new ItemInventoryException("This survivor is not registered"));
 		
-		ItemInventory wanted = itemInventoryDAO.findById(id4)
+		ItemInventory wanted = itemInventoryRepository.findById(id4)
 				.orElseThrow(() -> new ItemInventoryException("This survivor is not registered"));
 
 		if (survivor1.getInfectedFlag() == true && survivor1.getInfectedFlag() == true) {
